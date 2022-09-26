@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, deleteUser } from 'firebase/auth';
 import { firebaseApp } from '../firebase.config';
 function Header() {
@@ -7,7 +7,7 @@ function Header() {
     const firebaseAuth = getAuth(firebaseApp);
     const provider = new GoogleAuthProvider();
     const [isSignedIn, setIsSignedIn] = useState(false);
-    const [userName, setUsername] = useState("");
+    const [userName, setUsername] = useState<String | null>(null);
     
     const signIn = async () => {
         // console.log("Helloo");
@@ -18,10 +18,12 @@ function Header() {
         if(user.displayName){
             setUsername(user.displayName);
             setIsSignedIn(true);
+            localStorage.setItem('userName', user.displayName);
         }
         
         localStorage.setItem('user', JSON.stringify(providerData))
         localStorage.setItem('accessToken', JSON.stringify(refreshToken));
+        
     }
 
     const _signOut = () => {
@@ -35,6 +37,11 @@ function Header() {
         });
 
     }
+
+    useEffect(() => {
+        setIsSignedIn(localStorage.getItem('user') ? true : false);
+        setUsername(localStorage.getItem('userName') ? localStorage.getItem('userName'): '');
+    },[]);
     return (
         <header className="flex justify-between p-5 max-w-7xl mx-auto">
             <div className="flex items-center space-x-5">

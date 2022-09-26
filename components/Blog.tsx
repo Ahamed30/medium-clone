@@ -18,8 +18,8 @@ const Blog = ({ post }: IProps) => {
         className="w-full h-40 object-cover" 
         src={urlFor(post.mainImage).url()} alt="" />
         <article className='max-w-3xl mx-auto p-5'>
-            <h1 className="text-3xl mt-10 mb-3">{post.title}</h1>
-            <h2 className="text-xl text-light my-3">{post.description}</h2>
+            <h1 className="font-display text-3xl mt-10 mb-3">{post.title}</h1>
+            <h2 className="font-mono text-xl text-light my-3">{post.description}</h2>
         
             <div className="flex items-center space-x-2">
                 <img 
@@ -35,15 +35,16 @@ const Blog = ({ post }: IProps) => {
 
             <div className="mt-5">
                 <PortableText
+                    className='font-body text-base'
                     dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
                     projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}  
                     content={post.body}
                     serializers={{
                         h1: (props: String) => (
-                          <h1 className="my-5 text-2xl font-bold" {...props} />
+                          <h1 className="font-display my-5 text-3xl font-bold" {...props} />
                         ),
                         h2: (props: String) => (
-                          <h2 className="my-5 text-xl font-bold" {...props} />
+                          <h2 className="font-display my-5 text-2xl font-bold" {...props} />
                         ),
                         li: ({ children }: any) => (
                           <li className="ml-4 list-disc">{children}</li>
