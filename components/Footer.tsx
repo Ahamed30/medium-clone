@@ -15,9 +15,9 @@ const Footer = () => {
             </Link>
         </div>
         <div className="flex items-center justify-center">
-            <p className="text-sm font-serif p-3 underline cursor-pointer">Terms</p>
-            <p className="text-sm font-serif p-3 underline cursor-pointer">Privacy</p>
-            <p className="text-sm font-serif p-3 underline cursor-pointer">Help</p>
+            <div className="text-sm font-serif p-3 underline cursor-pointer">Terms</div>
+            <div className="text-sm font-serif p-3 underline cursor-pointer">Privacy</div>
+            <div className="text-sm font-serif p-3 underline cursor-pointer">Help</div>
         </div>
     </div>
     

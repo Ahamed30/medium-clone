@@ -17,10 +17,10 @@ const Comment = ({post}: IProps) => {
             <hr />
             {post.comments.map((comment) => (
             <div key={comment._id} className="py-2">
-                <p>
+                <div>
                     <span className="text-yellow-500">{comment.name}: </span>
                     {comment.comment}
-                </p>
+                </div>
             </div>
             ))}
         </div>

@@ -9,6 +9,7 @@
     "storybook": "start-storybook -p 6006"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.5",
     "@sanity/client": "^3.4.1",
     "@sanity/image-url": "^1.0.1",
     "firebase": "^9.10.0",
@@ -18,7 +19,9 @@
     "react-dom": "18.1.0",
     "react-hook-form": "^7.36.0",
     "react-loader-spinner": "^5.3.4",
-    "react-portable-text": "^0.5.1"
+    "react-portable-text": "^0.5.1",
+    "react-redux": "^8.0.4",
+    "reactstrap": "^9.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.19.1",

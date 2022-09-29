@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { PostType } from '../typings';
-// import {Loade from "react-loader-spinner";
 import { ThreeDots } from 'react-loader-spinner'
 
 interface IFormInput{
@@ -42,7 +41,8 @@ const CommentForm = ({post}: IProps) => {
               <h3 className="text-3xl font-bold">Thank you for submitting the content!</h3>
               <p>Once it has been approved, it will appear below!</p>
             </div>)
-          :(<form onSubmit = {handleSubmit(onSubmit)} className="flex flex-col p-5 max-w-2xl mx-auto mb-10">
+          :(<div>
+            <form onSubmit = {handleSubmit(onSubmit)} className="flex flex-col p-5 max-w-2xl mx-auto mb-10">
             <h3 className="text-sm text-yellow-500">Enjoyed the article?</h3>
             <h4 className="font-display text-3xl font-bold">Leave a comment below!</h4>
             <hr className="py-3 mt-2" />
@@ -102,6 +102,7 @@ const CommentForm = ({post}: IProps) => {
               }
           
           </form>
+          </div>
           
     )
 }

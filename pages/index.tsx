@@ -1,12 +1,14 @@
 import Head from 'next/head'
 import Router from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from '../components/Header'
 import Post from '../components/Post';
 import TitleCard from '../components/TitleCard';
-import { sanityClient } from '../sanity';
 import { PostType } from '../typings';
 import Footer from '../components/Footer';
+import { useDispatch } from 'react-redux';
+import { postActions } from '../store/post-slice';
+import { sanityClient } from '../sanity';
 
 
 interface IProps{
@@ -14,8 +16,9 @@ interface IProps{
 }
 
 const Home = ({posts}: IProps) => {
-  
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const [domLoaded, setDomLoaded] = useState(false);
   Router.events.on('routeChangeStart', (url) => {
     setLoading(true)
   })
@@ -24,7 +27,14 @@ const Home = ({posts}: IProps) => {
   })
   Router.events.on('routeChangeError', () => setLoading(false))
 
+  useEffect(() =>{
+    dispatch(postActions.addAllPosts(posts));
+    setDomLoaded(true);
+  })
+
   return (
+    <>
+    {domLoaded && (
      <div className="max-w-7xl mx-auto"> 
      {loading ?
         <div className="flex h-screen justify-center items-center">
@@ -40,17 +50,20 @@ const Home = ({posts}: IProps) => {
 
           <Header />
           <TitleCard />
-          <Post posts={posts} />
+          <Post />
           <Footer />
         </div>
       }
-    </div>
+    </div>)}
+    </>
   )
 }
 
 export default Home
 
 export const getServerSideProps = async () => {
+  // const dispatch = useDispatch();
+  console.log("Calledd");
   const query = `*[_type == "post"]{
     _id,
     title,
@@ -63,7 +76,7 @@ export const getServerSideProps = async () => {
     slug
   }`;
   const posts = await sanityClient.fetch(query);
-
+  // dispatch(postActions.addAllPosts(posts));
   return {
     props: {
       posts

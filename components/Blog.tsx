@@ -26,11 +26,11 @@ const Blog = ({ post }: IProps) => {
                 className="h-10 w-10 rounded-full"
                 src={urlFor(post.author.image).url()}
                 alt="" />
-                <p className="font-extralight text-sm">
+                <div className="font-extralight text-sm">
                     Blog post by{" "} 
                     <span className="text-green-600">{post.author.name}</span> - Published at{" "}
                     {new Date(post._createdAt).toLocaleString()}
-                </p>
+                </div>
             </div>
 
             <div className="mt-5">

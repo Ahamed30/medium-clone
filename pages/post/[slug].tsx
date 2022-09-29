@@ -12,11 +12,13 @@ interface Props{
 const Post = ({post}: Props) => {
   // console.log(post)
   return (
-    <main>
-      <Header />
-      <Blog post={post} />
-      <Footer />
-    </main>
+    <div>
+      <main>
+        <Header />
+        <Blog post={post} />
+        <Footer />
+      </main>
+    </div>
   )
 }
 
