@@ -11,8 +11,8 @@ const TitleCard = () => {
             Discover stories, thinking, and expertise from writers on any topic.
           </h2>
         </div>
-        <img className="hidden md:inline-flex h-32 lg:h-full"
-          src="https://accountabilitylab.org/wp-content/uploads/2020/03/Medium-logo.png"
+        <img className="hidden md:inline-flex lg:h-[20rem] w-[20rem]"
+          src="https://cdn-icons-png.flaticon.com/512/2111/2111505.png"
           alt=""
         ></img>
       </div>
